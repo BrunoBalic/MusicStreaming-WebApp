@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Artist | Music DB</title>
+    <meta name="description" content="Responsive, Bootstrap, BS4">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel="stylesheet" th:href="@{/css/site.min.css}">
+    <link rel="stylesheet" th:href="@{/css/plyrist.css}">
+    <script th:src="@{/js/site.min.js}"></script>
+    <script th:src="@{/js/plugins/list.js}"></script>
+    <script th:src="@{/js/plugins/plyrist.js}"></script>
+    <script th:src="@{/js/plugins/plyr.polyfilled.min.js}"></script>
+</head>
+<body class="layout-column bg-dark">
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div id="main" class="layout-row flex">
+    <div id="content" class="flex">
+        <div>
+            <div class="page-content page-container" id="page-content">
+                <div class="padding sr">
+                    <div class="page-hero" data-id="2"
+                         data-source="https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview128/v4/07/2c/59/072c59fe-549d-bd0e-f93d-3e4a1f673af5/mzaf_4035597378145374075.plus.aac.p.m4a">
+                        <div class="media bg-media">
+                            <div class="media-content" style="background-image:url(../assets/img/b10.jpg)"></div>
+                        </div>
+                        <div class="pos-rlt"><h1 class="display-3 font-weight-bold text-white"
+                                                 th:text="|${user.first_name} ${user.last_name}|"></h1><span
+                                class="hide title">Shallow</span> <span
+                                class="hide subtitle">Lady Gaga & Bradley Cooper</span>
+                            <div class="py-4 toolbar align-items-center">
+                                <button class="btn btn-icon btn-play btn-rounded gd-primary"
+                                        data-toggle-class=""></button>
+                                <span th:text="${numb_tracks} + ' - Tracks'" class="text-muted">Broj pjesama</span>
+                                <span class="text-muted"> | </span>
+                                <span th:text="${num_playlists} + ' - Playlists'" class="text-muted">Broj playlista</span>
+                                <button class="btn btn-sm btn-outline-light btn-rounded mx-3" data-toggle-class><span
+                                        class="d-inline">Follow</span> <span class="d-none">Following</span></button>
+
+                                <div th:if="${amISubed != true}">
+                                <form th:action="''" method="POST">
+                                    <input type="submit" value="Follow" class="btn btn-sm btn-outline-light btn-rounded mx-3" />
+                                </form>
+                                </div>
+
+                                <div th:if="${amISubed == true}">
+                                <form th:action="''" method="DELETE">
+                                    <input type="submit" value="Unfollow" class="btn btn-sm btn-outline-light btn-rounded mx-3" />
+                                </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-md-flex pos-rlt">
+                        <div class="flex">
+                            <div class="d-flex">
+                                <ul class="nav nav-sm text-sm nav-pills nav-rounded py-4">
+                                    <li class="nav-item"><a class="nav-link active" href="#tracks" data-toggle="tab">Tracks</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#playlist" data-toggle="tab">Playlist</a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#following" data-toggle="tab">Following</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+
+                                <div class="tab-pane fade show active" id="tracks">
+                                    <div class="row list-row" th:each="x : ${tracks}">
+                                        <div class="col-12" data-id="" data-source="">
+                                            <div class="list-item r is-show is-shown"
+                                                 style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0s; ">
+                                                <div class="media">
+                                                    <a href="" class="ajax media-content"
+                                                       style="background-image:url(/images/song.jpg)"
+                                                       data-pjax-state=""></a>
+                                                    <div class="media-action media-action-overlay">
+                                                        <button class="btn btn-icon no-bg no-shadow hide-row"
+                                                                data-toggle-class="">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                 height="16"
+                                                                 viewBox="0 0 24 24"
+                                                                 fill="none" stroke="currentColor" stroke-width="2"
+                                                                 stroke-linecap="round"
+                                                                 stroke-linejoin="round"
+                                                                 class="feather feather-heart active-fill">
+                                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                                            </svg>
+                                                        </button>
+                                                        <button class="btn btn-raised btn-icon btn-rounded bg--white btn-play"></button>
+                                                        <button class="btn btn-icon no-bg no-shadow hide-row btn-more"
+                                                                data-toggle="dropdown">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                 height="16"
+                                                                 viewBox="0 0 24 24"
+                                                                 fill="none" stroke="currentColor" stroke-width="2"
+                                                                 stroke-linecap="round"
+                                                                 stroke-linejoin="round"
+                                                                 class="feather feather-more-horizontal">
+                                                                <circle cx="12" cy="12" r="1"></circle>
+                                                                <circle cx="19" cy="12" r="1"></circle>
+                                                                <circle cx="5" cy="12" r="1"></circle>
+                                                            </svg>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="list-content text-center">
+                                                    <div class="list-body"><a th:href="'/track/' + ${x.id}"
+                                                                              class="list-title title ajax h-1x" th:text="${x.title}">Song Name </a><a
+                                                            href="artist.detail.html#378918899"
+                                                            class="list-subtitle d-block text-muted h-1x subtitle ajax" th:text="|${user.first_name} ${user.last_name}|">Artist</a></div>
+                                                </div>
+                                                <div class="list-action show-row">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="px-3 text-sm text-muted d-none d-md-block" th:text="${x.duration}">Duration
+                                                        </div>
+                                                        <button class="btn btn-icon no-bg no-shadow"
+                                                                data-toggle-class="">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                 height="16"
+                                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                 stroke-width="2" stroke-linecap="round"
+                                                                 stroke-linejoin="round"
+                                                                 class="feather feather-heart active-primary">
+                                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                                            </svg>
+                                                        </button>
+                                                        <button class="btn btn-icon no-bg no-shadow btn-more"
+                                                                data-toggle="dropdown" aria-expanded="false">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                 height="16"
+                                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                 stroke-width="2" stroke-linecap="round"
+                                                                 stroke-linejoin="round"
+                                                                 class="feather feather-more-horizontal">
+                                                                <circle cx="12" cy="12" r="1"></circle>
+                                                                <circle cx="19" cy="12" r="1"></circle>
+                                                                <circle cx="5" cy="12" r="1"></circle>
+                                                            </svg>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-right"
+                                                             x-placement="top-end"
+                                                             style="position: absolute; transform: translate3d(348px, -170px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                            <a class="dropdown-item" href="#">Play</a><a
+                                                                class="dropdown-item" href="#">Next to
+                                                            play</a><a class="dropdown-item" href="#">Add to
+                                                            playlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="playlist">
+                                    <div class="row list-row">
+                                        <div class="col-6 col-sm-4" th:each="x : ${playlists}">
+                                            <div class="list-item r">
+                                                <div class="media col-4">
+                                                    <a href="item.detail.html#408576846" class="ajax media-content"
+                                                                            style="background-image:url(/images/playlist.png)"></a>
+                                                    <div class="media-action media-action-overlay">
+
+                                                        <div class="dropdown-menu dropdown-menu-right"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="list-content text-center">
+                                                    <div class="list-body"><a th:href="'/playlist/' + ${x.id}"
+                                                                              class="list-title title ajax h-1x" th:text="${x.name}">Playlist name </a><a
+                                                            href="artist.detail.html#408576846"
+                                                            class="list-subtitle d-block text-muted h-1x subtitle ajax" th:text="${x.publish_date}"></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="following">
+                                    <div class="row list media-circle">
+                                        <div class="col-4 col-sm-4 col-md-3 col-lg-3 py-3" data-id=""
+                                             th:each="x : ${following}">
+                                            <div class="list-item r is-show is-shown" data-sr-id="31"
+                                                 style="visibility: hidden;; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0s; ">
+                                                <div class="media">
+                                                    <a href="artist.detail.html#418888835" class="ajax media-content"
+                                                       style="background-image:url(../assets/img/b8.jpg)"
+                                                       data-pjax-state=""></a>
+                                                    <div class="media-action">
+                                                    </div>
+                                                </div>
+                                                <div class="list-content text-center">
+                                                    <div class="list-body"><a href="#"
+                                                                              class="list-subtitle d-block text-muted h-1x subtitle ajax"
+                                                                              data-pjax-state=""
+                                                                              th:text="|${x.first_name} ${x.last_name}|"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="min-width: 4rem"></div>
+                        <div class="w-xl w-auto-sm no-shrink">
+                            <div class="sticky">
+                                <div class="list mb-5">
+                                    <div class="list-item list-overlay r">
+                                        <div class="media"><a href="item.detail.html#" class="ajax media-content"
+                                                              style="background-image:url(../assets/img/b17.jpg)"></a>
+                                            <div class="media-action"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <h6 class="text text-muted sr-item">Top tracks</h6>
+                                <div class="row list-row">
+                                    <div class="col-12" data-id="434202110" data-category="Hip-Hop" data-tag="USA"
+                                         data-source="https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview128/v4/95/83/ee/9583ee9b-68bb-7e91-c032-1f8805157854/mzaf_896336562892407790.plus.aac.p.m4a">
+                                        <div class="list-item r">
+                                            <div class="media"><a href="item.detail.html#434202110"
+                                                                  class="ajax media-content"
+                                                                  style="background-image:url(../assets/img/c13.jpg)"></a>
+                                                <div class="media-action">
+                                                    <button class="btn btn-icon no-bg no-shadow hide-row"
+                                                            data-toggle-class><i data-feather="heart"
+                                                                                 class="active-fill"></i></button>
+                                                    <button class="btn btn-raised btn-icon btn-rounded bg--white btn-play"></button>
+                                                    <button class="btn btn-icon no-bg no-shadow hide-row btn-more"
+                                                            data-toggle="dropdown"><i
+                                                            data-feather="more-horizontal"></i></button>
+                                                    <div class="dropdown-menu dropdown-menu-right"></div>
+                                                </div>
+                                            </div>
+                                            <div class="list-content">
+                                                <div class="list-body"><a href="item.detail.html#434202110"
+                                                                          class="list-title title ajax h-1x">SICKO
+                                                    MODE </a><a href="artist.detail.html#434202110"
+                                                                class="list-subtitle d-block text-muted h-1x subtitle ajax">Travis
+                                                    Scott</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12" data-id="437608186" data-category="Pop" data-tag="Denmark"
+                                         data-source="https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview128/v4/20/c7/47/20c74768-5ce8-52ca-c13e-d51fd1641ddb/mzaf_8197938095341255443.plus.aac.p.m4a">
+                                        <div class="list-item r">
+                                            <div class="media"><a href="item.detail.html#437608186"
+                                                                  class="ajax media-content"
+                                                                  style="background-image:url(../assets/img/c28.jpg)"></a>
+                                                <div class="media-action">
+                                                    <button class="btn btn-icon no-bg no-shadow hide-row"
+                                                            data-toggle-class><i data-feather="heart"
+                                                                                 class="active-fill"></i></button>
+                                                    <button class="btn btn-raised btn-icon btn-rounded bg--white btn-play"></button>
+                                                    <button class="btn btn-icon no-bg no-shadow hide-row btn-more"
+                                                            data-toggle="dropdown"><i
+                                                            data-feather="more-horizontal"></i></button>
+                                                    <div class="dropdown-menu dropdown-menu-right"></div>
+                                                </div>
+                                            </div>
+                                            <div class="list-content">
+                                                <div class="list-body"><a href="item.detail.html#437608186"
+                                                                          class="list-title title ajax h-1x">Love
+                                                    Someone </a><a href="artist.detail.html#437608186"
+                                                                   class="list-subtitle d-block text-muted h-1x subtitle ajax">Lukas
+                                                    Graham</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12" data-id="433873297" data-category="Pop" data-tag="USA"
+                                         data-source="https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview128/v4/61/21/7d/61217d02-2aea-96cc-f2f8-ff29a90cf043/mzaf_3962092115674978972.plus.aac.p.m4a">
+                                        <div class="list-item r">
+                                            <div class="media"><a href="item.detail.html#433873297"
+                                                                  class="ajax media-content"
+                                                                  style="background-image:url(../assets/img/c27.jpg)"></a>
+                                                <div class="media-action">
+                                                    <button class="btn btn-icon no-bg no-shadow hide-row"
+                                                            data-toggle-class><i data-feather="heart"
+                                                                                 class="active-fill"></i></button>
+                                                    <button class="btn btn-raised btn-icon btn-rounded bg--white btn-play"></button>
+                                                    <button class="btn btn-icon no-bg no-shadow hide-row btn-more"
+                                                            data-toggle="dropdown"><i
+                                                            data-feather="more-horizontal"></i></button>
+                                                    <div class="dropdown-menu dropdown-menu-right"></div>
+                                                </div>
+                                            </div>
+                                            <div class="list-content">
+                                                <div class="list-body"><a href="item.detail.html#433873297"
+                                                                          class="list-title title ajax h-1x">Beautiful </a><a
+                                                        href="artist.detail.html#433873297"
+                                                        class="list-subtitle d-block text-muted h-1x subtitle ajax">Bazzi
+                                                    Feat. Camila Cabello</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12" data-id="428550515" data-category="RAP" data-tag="Australia"
+                                         data-source="https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview115/v4/4c/58/f4/4c58f4f0-ec84-c5e3-15ed-39beb0933e38/mzaf_3604425775820894823.plus.aac.p.m4a">
+                                        <div class="list-item r">
+                                            <div class="media"><a href="item.detail.html#428550515"
+                                                                  class="ajax media-content"
+                                                                  style="background-image:url(../assets/img/c3.jpg)"></a>
+                                                <div class="media-action">
+                                                    <button class="btn btn-icon no-bg no-shadow hide-row"
+                                                            data-toggle-class><i data-feather="heart"
+                                                                                 class="active-fill"></i></button>
+                                                    <button class="btn btn-raised btn-icon btn-rounded bg--white btn-play"></button>
+                                                    <button class="btn btn-icon no-bg no-shadow hide-row btn-more"
+                                                            data-toggle="dropdown"><i
+                                                            data-feather="more-horizontal"></i></button>
+                                                    <div class="dropdown-menu dropdown-menu-right"></div>
+                                                </div>
+                                            </div>
+                                            <div class="list-content">
+                                                <div class="list-body"><a href="item.detail.html#428550515"
+                                                                          class="list-title title ajax h-1x">Be
+                                                    Alright </a><a href="artist.detail.html#428550515"
+                                                                   class="list-subtitle d-block text-muted h-1x subtitle ajax">Dean
+                                                    Lewis</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12" data-id="408576846" data-category="Rap" data-tag="England"
+                                         data-source="https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview128/v4/c9/1f/83/c91f83b2-38c7-3a93-fabe-2da29dc5c2a8/mzaf_5271705754245759426.plus.aac.p.m4a">
+                                        <div class="list-item r">
+                                            <div class="media"><a href="item.detail.html#408576846"
+                                                                  class="ajax media-content"
+                                                                  style="background-image:url(../assets/img/c25.jpg)"></a>
+                                                <div class="media-action">
+                                                    <button class="btn btn-icon no-bg no-shadow hide-row"
+                                                            data-toggle-class><i data-feather="heart"
+                                                                                 class="active-fill"></i></button>
+                                                    <button class="btn btn-raised btn-icon btn-rounded bg--white btn-play"></button>
+                                                    <button class="btn btn-icon no-bg no-shadow hide-row btn-more"
+                                                            data-toggle="dropdown"><i
+                                                            data-feather="more-horizontal"></i></button>
+                                                    <div class="dropdown-menu dropdown-menu-right"></div>
+                                                </div>
+                                            </div>
+                                            <div class="list-content">
+                                                <div class="list-body"><a href="item.detail.html#408576846"
+                                                                          class="list-title title ajax h-1x">Shotgun </a><a
+                                                        href="artist.detail.html#408576846"
+                                                        class="list-subtitle d-block text-muted h-1x subtitle ajax">George
+                                                    Ezra</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12" data-id="435950080" data-category="Dance"
+                                         data-tag="United Kingdom"
+                                         data-source="https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview128/v4/bd/28/a1/bd28a103-b17f-540a-eae3-9bfe992e2562/mzaf_6343854158099733867.plus.aac.p.m4a">
+                                        <div class="list-item r">
+                                            <div class="media"><a href="item.detail.html#435950080"
+                                                                  class="ajax media-content"
+                                                                  style="background-image:url(../assets/img/c2.jpg)"></a>
+                                                <div class="media-action">
+                                                    <button class="btn btn-icon no-bg no-shadow hide-row"
+                                                            data-toggle-class><i data-feather="heart"
+                                                                                 class="active-fill"></i></button>
+                                                    <button class="btn btn-raised btn-icon btn-rounded bg--white btn-play"></button>
+                                                    <button class="btn btn-icon no-bg no-shadow hide-row btn-more"
+                                                            data-toggle="dropdown"><i
+                                                            data-feather="more-horizontal"></i></button>
+                                                    <div class="dropdown-menu dropdown-menu-right"></div>
+                                                </div>
+                                            </div>
+                                            <div class="list-content">
+                                                <div class="list-body"><a href="item.detail.html#435950080"
+                                                                          class="list-title title ajax h-1x">Promises </a><a
+                                                        href="artist.detail.html#435950080"
+                                                        class="list-subtitle d-block text-muted h-1x subtitle ajax">Calvin
+                                                    Harris &amp; Sam Smith</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

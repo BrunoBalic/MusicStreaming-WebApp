@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<header id="header" class="page-header fixed">
+    <div class="navbar navbar-expand-lg" th:fragment="header">
+        <a th:href="@{/}" class="navbar-brand text-white">
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1" fill="#000"></circle>
+                <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1"></circle>
+                <g class="loading-spin" stroke="currentColor" stroke-width="1" style="transform-origin: 12px 12px">
+                    <path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path>
+                </g>
+            </svg>
+            <span class="hidden-folded d-inline l-s-n-1x">Music DB</span></a>
+        <div class="collapse navbar-collapse order-2 order-lg-1" id="navbarCollapse">
+            <ul class="navbar-nav" data-nav>
+                <li class="nav-item"><a th:href="@{/discover}" class="nav-link"><span
+                        class="nav-text">Discover</span></a></li>
+                <li class="nav-item"><a th:href="@{/artists}" class="nav-link"><span
+                        class="nav-text">Artists</span></a></li>
+                <li class="nav-item"><a th:href="@{/playlist/create}" class="nav-link"><span
+                        class="nav-text">Create Playlist</span></a></li>
+                <li class="nav-item"><a th:href="@{/myprofile}" class="nav-link"><span
+                        class="nav-text">My Profile</span></a></li>
+
+            </ul>
+
+        </div>
+        <ul class="nav navbar-menu order-1 order-lg-2">
+            <li class="nav-item dropdown"><a class="nav-link px-2">
+                <!--<i data-feather="upload" class="d-lg-none"></i>-->
+                <a th:href="@{/upload}">
+                    <span class="btn btn-rounded btn-sm gd-primary text-white d-none d-lg-block">Upload</span>
+                </a>
+            </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" data-toggle="dropdown" class="nav-link d-flex align-items-center py-0 px-lg-0 px-2 text-color">
+                    <span class="avatar w-24">
+                        <img src="/images/user.png" alt="..."></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right mt-3 animate fadeIn">
+                    <a class="dropdown-item" th:href="@{/myprofile}"><span>Profile</span></a>
+                    <!-- MOŽDA POKUŠATI NAPISATI KAO FRAGMENT?!?!
+                    <a class="dropdown-item" th:href="@{/artist_detail#tracks}"><span>Tracks</span></a>
+                    <a class="dropdown-item" th:href="@{/artist_detail#albums}"><span>Albums</span> </a> -->
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:href="@{/logout}">Sign out</a>
+                </div>
+            </li>
+            <li class="nav-item d-lg-none"><a href="#" class="nav-link px-2" data-toggle="collapse" data-toggle-class
+                                              data-target="#navbarCollapse"><i data-feather="menu"></i></a></li>
+        </ul>
+    </div>
+</header>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Discover | Music DB</title>
+    <meta name="description" content="Responsive, Bootstrap, BS4">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel="stylesheet" th:href="@{/css/site.min.css}">
+    <script th:src="@{/js/site.min.js}"></script>
+</head>
+<body class="layout-column bg-dark">
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<!-- do ovdje rješeno! -->
+<div id="main" class="layout-row flex">
+    <div id="content" class="flex">
+        <div>
+            <div class="page-content page-container" id="page-content">
+                <div class="padding sr">
+                    <div class="page-hero">
+                        <div class="media bg-media">
+                            <div class="media-content"
+                                 th:style="'background: url(images/discover_background.jpg)'">
+
+                            </div>
+                        </div>
+                        <!-- naslovi -->
+                        <div data-bg="../assets/img/b9.jpg">
+                            <div class="pos-rlt"><h2 class="display-3 font-weight-bold text-white">Amazing
+                                songs</h2>
+                                <div class="col-6 px-0 py-3 text-muted"><p>In leo ut lectus diam consequat cursus
+                                    adipiscing rhoncus, id vitae odio tellus donec in purus nunc pellentesque enim
+                                    a</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- featured - top tracks
+                    -> DOHVATITI PJESME I POREDATI IH PREMA DATUMU UPLOADANJA ILI ID-U DESCENDING -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="heading pt-5 pb-3 d-flex">
+                                <div>
+                                    <div class="text-muted sr-item">Artists</div>
+                                    <h5 class="text-highlight sr-item">Recently added</h5></div>
+                                <span class="flex"></span></div>
+                            <div class="row list-row list-index">
+
+                                <!-- recently added tracks
+                                    - dohvatiti zadnje uploadane pjesme
+                                    - dodati play opciju
+                                    - dodati play botun da se vidi
+                                    - ne vide se tri točkice s opcijama za dodavanje na playlistu
+                                -->
+                                <div class="col-12" data-id="378918899" data-category="Dance" data-tag="Canada"
+                                     data-source="https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview118/v4/c3/6c/db/c36cdbd0-304b-11b0-128d-eda635333cc8/mzaf_1033589088272334209.plus.aac.p.m4a">
+                                    <div class="list-item r">
+                                        <div class="media"><a href="item.detail.html#378918899"
+                                                              class="ajax media-content"
+                                                              style="background-image:url(../assets/img/c20.jpg)"></a>
+                                            <div class="media-action media-action-overlay">
+                                                <button class="btn btn-icon no-bg no-shadow hide-row" data-toggle-class>
+                                                    <i data-feather="heart" class="active-fill"></i></button>
+                                                <button class="btn btn-raised btn-icon btn-rounded bg--white btn-play"></button>
+                                                <button class="btn btn-icon no-bg no-shadow hide-row btn-more"
+                                                        data-toggle="dropdown"><i data-feather="more-horizontal"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right"></div>
+                                            </div>
+                                        </div>
+                                        <div class="list-content text-center">
+                                            <div class="list-body"><a href="item.detail.html#378918899"
+                                                                      class="list-title title ajax h-1x">Body </a><a
+                                                    href="artist.detail.html#378918899"
+                                                    class="list-subtitle d-block text-muted h-1x subtitle ajax">Loud
+                                                Luxury Feat. Brando</a></div>
+                                        </div>
+                                        <div class="list-action show-row">
+                                            <div class="d-flex align-items-center">
+                                                <div class="px-3 text-sm text-muted d-none d-md-block">03:26</div>
+                                                <button class="btn btn-icon no-bg no-shadow" data-toggle-class><i
+                                                        data-feather="heart" class="active-primary"></i></button>
+                                                <button class="btn btn-icon no-bg no-shadow btn-more"
+                                                        data-toggle="dropdown"><i data-feather="more-horizontal"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

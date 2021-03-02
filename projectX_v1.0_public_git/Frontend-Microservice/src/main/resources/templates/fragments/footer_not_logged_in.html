@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<footer id="footer" class="page-footer">
+    <div class="padding bg-dark b-t" th:fragment="footer">
+        <div class="page-container">
+            <div class="py-5 text-inherit text-hover-primary">
+                <div class="row mb-5">
+                    <div class="col-6 col-md-4">
+                        <div class="mb-3"><a th:href="@{index}" class="navbar-brand text-white">
+                            <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                 fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1"
+                                        fill="#000"></circle>
+                                <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1"></circle>
+                                <g class="loading-spin" stroke="currentColor" stroke-width="1"
+                                   style="transform-origin: 12px 12px">
+                                    <path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path>
+                                </g>
+                            </svg>
+                            <span class="hidden-folded d-inline l-s-n-1x">Music DB</span></a>
+                        </div>
+                        <div class="px-1">
+                            <div class="dropdown mt-5 ml-md-5">
+                                <button class="btn w-sm btn-dark text-align-auto b-a sorting" data-toggle="dropdown">
+                                    English
+                                </button>
+                                <div class="dropdown-menu"><a href="#" class="dropdown-item">English</a> <a href="#"
+                                                                                                            class="dropdown-item">Français</a>
+                                    <a href="#" class="dropdown-item">Hrvatski</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2"><h5 class="mb-3 text-muted">Pages</h5>
+                        <ul class="list-unstyled l-h-2x text-highlight">
+                            <li><a th:href="@{/discover}">Discover</a></li>
+                            <li><a th:href="@{/artists}">Artists</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-2"><h5 class="mb-3 text-muted">Your Music DB</h5>
+                        <ul class="list-unstyled l-h-2x text-highlight">
+                            <li><a th:href="@{/oauth2/authorization/auth0}">Sign In</a></li>
+                            <li><a th:href="@{/register}">Register</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-2"><h5 class="mb-3 text-muted"></h5>
+                        <ul class="list-unstyled l-h-2x text-highlight">
+
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-2 text-md-right"><h5 class="mb-3 text-muted">Follow Us</h5>
+                        <ul class="list-unstyled l-h-2x text-highlight">
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

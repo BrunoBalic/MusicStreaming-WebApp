@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div th:fragment="footer">
+
+    <div sec:authorize="!isAuthenticated()">
+        <div th:replace="fragments/footer_not_logged_in :: footer"></div>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <div th:replace="fragments/footer_logged_in :: footer"></div>
+    </div>
+
+</div>
+
+</body>
+</html>

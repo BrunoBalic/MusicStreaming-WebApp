@@ -1,0 +1,45 @@
+.container-searchBox {
+    font-size: unset !important;
+        font-family: unset !important;
+        font-weight: unset !important;
+        font-style: unset !important;
+        text-transform: unset !important;
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        line-height: unset !important;
+        color: unset !important;
+        margin: unset !important;
+        display: unset !important;
+        -webkit-margin-before: unset !important;
+        -webkit-margin-after: unset !important;
+        -webkit-margin-start: unset !important;
+        -webkit-margin-end: unset !important;
+
+    width: 60%;
+    margin: 100px auto;
+    background: #333;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.container-searchBox input {
+    background: transparent;
+    border: 0;
+    font-size: 15px;
+    color: #fff;
+}
+
+.suggestions {
+    border-top: 2px solid #999;
+}
+.suggestions > div {
+    padding: 15px;
+    font-size: 20px;
+    color: #fff;
+    border-top: 1px solid #666;
+    cursor: pointer;
+}
+
+.suggestions > div:hover {
+    background-color: #B399D4;
+}

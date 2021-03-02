@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Home | Music DB </title>
+    <meta name="description" content="Responsive, Bootstrap, BS4">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel="stylesheet" th:href="@{/css/site.min.css}">
+    <script th:src="@{/js/site.min.js}"></script>
+</head>
+<body class="layout-column bg-dark">
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div id="main" class="layout-row flex">
+    <div id="content" class="flex">
+        <div class="sr">
+            <div class="page-hero page-container">
+                <div class="media bg-media">
+                    <div class="media-content" th:style="'background: url(images/index_background.jpg)'"></div>
+                </div>
+                <div class="p-5 pos-rlt text-center"><h1 class="display-3 font-weight-bold text-white mb-5 mx-5">Music
+                    template for artists, audio platform.</h1><a th:href="@{discover}"
+                                                                 class="btn btn-md gd-primary text-white no-ajax m-2">Discover
+                    new Music</a></div>
+            </div>
+            <div class="page-container p-5 pos-rlt">
+                <div class="py-5 text-center"><h2 class="display-4 font-weight-bold text-white mb-5">Artists on
+                    Music DB</h2>
+                    <p>Find the most popular artists and listen their music on Bepop, Create your own playlist when
+                        listening to them.</p>
+                    <div class="py-4"><a th:href="@{artists}" class="btn btn-md btn-outline-primary no-ajax m-2">Explore
+                        artists</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

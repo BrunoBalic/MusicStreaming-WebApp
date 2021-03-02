@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Artists | Music DB</title>
+    <meta name="description" content="Responsive, Bootstrap, BS4">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/site.min.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://kodhus.com/static/css/kodhus.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/searchBox.css}">
+    <script th:src="@{/js/site.min.js}"></script>
+    <script th:src="@{/js/extra.js}"></script>
+
+</head>
+
+<body class="layout-column bg-dark">
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="artists_name" th:each="x : ${artists}">
+    <div class="visually-hidden"  th:text="|${x.first_name} ${x.last_name}|">First name Last name</div>
+</div>
+
+<div class="artists_username" th:each="x : ${artists}">
+    <div class="visually-hidden"  th:text="|${x.username}|">First name Last name</div>
+</div>
+
+<div id="main" class="layout-row flex">
+    <div id="content" class="flex">
+        <div>
+            <div class="page-content page-container" id="page-content">
+                <div class="padding sr" id="list" data-plugin="list">
+                    <div class="page-hero">
+                        <div class="media bg-media">
+                            <div class="media-content" style="background-image:url(img/.jpg)"></div>
+                        </div>
+                        <div class="pos-rlt"><h1 class="display-3 font-weight-bold text-white"
+                                                 th:text="${numb_artists} + ' Artists'">numb_artists Artists</h1></div>
+                    </div>
+                    <div class="d-lg-flex pos-rlt">
+                        <div class="flex">
+                            <div class = "container-searchBox">
+                                <input class="search-input" type="text" placeholder="Search..."/>
+                                <div class="suggestions"></div>
+                            </div>
+                            <br><br>
+                            <div class="row list media-circle">
+                                <div class="col-4 col-sm-4 col-md-3 col-lg-3 py-3" data-id="" th:each="x : ${artists}">
+                                    <div class="list-item r">
+                                        <div class="media">
+                                            <a th:href="@{artist/{username}(username=${x.username})}" class="ajax media-content"
+                                               style="background-image:url(../assets/img/b8.jpg)"
+                                               data-pjax-state=""></a>
+                                            <div class="media-action">
+                                            </div>
+                                        </div>
+                                        <div class="list-content text-center">
+                                            <div class="list-body"><a href="#"
+                                                                      class="list-subtitle d-block text-muted h-1x subtitle ajax"
+                                                                      data-pjax-state=""
+                                                                      th:text="|${x.first_name} ${x.last_name}|"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex py-3 justify-content-center">
+                                <ul class="pagination pagination-sm"></ul>
+                            </div>
+                        </div>
+                        <div style="min-width: 4rem"></div>
+                        <div class="w-xl w-auto-sm no-shrink">
+                            <div class="sticky">
+                                <div class="list mb-5">
+                                    <div class="list-item list-overlay r">
+                                        <div class="media"><a href="item.detail.html#" class="ajax media-content"
+                                                              style="background-image:url(../assets/img/b15.jpg)"></a>
+                                            <div class="media-action"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<script th:src="@{/js/site.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/searchBox.js}"></script>
+
+</body>
+</html>
